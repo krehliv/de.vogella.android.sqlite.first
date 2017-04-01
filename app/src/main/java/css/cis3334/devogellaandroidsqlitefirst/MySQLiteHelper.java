@@ -11,16 +11,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_COMMENTS = "comments";         // comments on the table
     public static final String COLUMN_ID = "_id";                   // An identification number for a given column
     public static final String COLUMN_COMMENT = "comment";          // comments for given column
+    public static final String COLUMN_RATING = "rating";
 
     private static final String DATABASE_NAME = "commments.db";     // The name of the database
-    private static final int DATABASE_VERSION = 1;                  // The version number of the database
+    private static final int DATABASE_VERSION = 2;                  // The version number of the database
 
     // Database creation sql statement
     // Sample sql create table command: CREATE TABLE workers (ID long, LastName varchar(50), FirstName varchar(50));
     private static final String DATABASE_CREATE = "create table "
             + TABLE_COMMENTS + "( " + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_COMMENT
-            + " text not null);";
+            + " text not null, " + COLUMN_RATING + " text);";
 
     // Sets up the database
     public MySQLiteHelper(Context context) {

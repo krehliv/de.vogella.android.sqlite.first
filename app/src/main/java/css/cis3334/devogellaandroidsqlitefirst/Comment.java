@@ -4,6 +4,7 @@ package css.cis3334.devogellaandroidsqlitefirst;
 public class Comment {
     private long id;            // "Current ID" long value taken from a database entry
     private String comment;     // "Current Comment" string value taken from the database
+    private String rating;
 
     // Returns the long value of the most recently set "Current ID".
     public long getId() {
@@ -25,9 +26,13 @@ public class Comment {
         this.comment = comment;
     }
 
+
+    public String getRating() { return rating; }
+
+
+    public void setRating(String rating) { this.rating = rating; }
+
     // Will be used by the ArrayAdapter in the ListView
     @Override
-    public String toString() {
-        return comment;
-    }
+    public String toString() { return "[" + rating + "]: " + comment; }
 }

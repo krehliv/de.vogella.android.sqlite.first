@@ -7,10 +7,13 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 // Tests the database. Uses a ListActivity to display data
 public class TestDatabaseActivity extends ListActivity {
     private CommentsDataSource datasource;
+
+    EditText etRating;
 
     // Creates/opens a comments data source, a list of the comments in that data source, and uses the SimpleCursorAdapter to show the elements in a list view
     @Override
@@ -37,10 +40,11 @@ public class TestDatabaseActivity extends ListActivity {
         Comment comment = null;
         switch (view.getId()) {
             case R.id.add:
+                etRating = (EditText) findViewById(R.id.editTextRating);
                 String[] comments = new String[] { "Cool", "Very nice", "Hate it" };
                 int nextInt = new Random().nextInt(3);
                 // save the new comment to the database
-                comment = datasource.createComment(comments[nextInt]);
+                comment = datasource.createComment(comments[nextInt], etRating.getText().toString());
                 adapter.add(comment);
                 break;
             case R.id.delete:
